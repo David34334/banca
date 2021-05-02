@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registrarse</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+            <ui:define name="content">   
+                <div class="card border-dark mb-3">
+                    <div class="card-header">Iniciar Sesión</div>
+                    <div class="card-body text-dark">
+                        <h:form>
+                            <div class="text-center">
+                                <img src="../../img/banco2.png" width="150px" height="150px" alt="alt"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="nombreUsuario" class="control-label col-sm-4" value="Nombre de Usuario:"></h:outputLabel>
+                                <h:inputText  required="true" id="nombreUsuario" value="#{clienBean.cliente.nombreUsuario}" class="form-control"></h:inputText>
+                                <h:message for="nombreUsuario" class="form-control alert alert-danger"></h:message>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="clave" class="control-label col-sm-4" value="Clave:"></h:outputLabel>
+                                <h:inputSecret required="true" id="clave" value="#{clienBean.cliente.clave}" class="form-control"></h:inputSecret>
+                                <h:message for="clave" class="form-control alert alert-danger"></h:message>
+                            </div>
+                            <div class="form-group">
+                                <h:commandButton value="Iniciar Sesión!" action="#{clienBean.iniciarSesion(clienBean.cliente.nombreUsuario, clienBean.cliente.clave)}" class="btn btn-dark btn-block"></h:commandButton>
+                            </div>
+                        </h:form>
+                        <h:form>
+                            <h:commandButton value="¿No tienes una cuenta? ¡clic acá!" class="btn btn-warning btn-block" action="registrarse"></h:commandButton>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

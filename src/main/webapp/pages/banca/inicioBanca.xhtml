@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Alumnos!</title>
+    </h:head>
+    <h:body>
+        <h:form rendered="#{clienBean.verificarSesion}">
+            <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+                <ui:define name="content">
+                    <h4 class="text-sm-right "><small>Bienvenido/a #{clienBean.clienteSesion.nombreUsuario} !</small></h4>
+                    <img src="../../img/inicio.jpg" width="1110px" height="300px" alt="alt"/>
+                    <h2 class="text-center text-dark font-weight-lighter">Consulta nuestros productos!</h2>
+
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Cuenta de Ahorros
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">¡Abre tu cuenta de ahorros en un clic!</h5>
+                            <img src="../../img/producto.png" width="400px" height="200px" alt="alt"/>
+                            <p class="card-text">Abre tu cuenta de ahorros o nómina y hazte cliente en unos minutos. La tarjeta te la enviaremos sin costo a tu casa o puedes recogerla en la oficina que prefieras.</p>
+                            <h:form>
+                                <h:commandButton class="btn btn-warning btn-block" value="Crear Cuenta!" action="index"></h:commandButton>
+                            </h:form>
+                        </div>
+                        <div class="card-footer text-muted">
+                            2021
+                        </div>
+                    </div>
+
+                    <div class="card text-center mt-4">
+                        <div class="card-header">
+                            Cuenta Corriente
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">¡Abre tu cuenta corriente en un clic!</h5>
+                            <img src="../../img/producto.png" width="400px" height="200px" alt="alt"/>
+                            <p class="card-text">Abre tu cuenta corriente y hazte cliente en unos minutos. La tarjeta te la enviaremos sin costo a tu casa o puedes recogerla en la oficina que prefieras.</p>
+                            <h:form>
+                                <h:commandButton class="btn btn-warning btn-block" value="Crear Cuenta!" action="index"></h:commandButton>
+                            </h:form>
+                        </div>
+                        <div class="card-footer text-muted">
+                            2021
+                        </div>
+                    </div>
+                </ui:define>
+            </ui:composition>
+        </h:form>
+    </h:body>
+</html>

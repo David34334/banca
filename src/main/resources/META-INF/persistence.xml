@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <!-- Define Persistence Unit -->
+  <persistence-unit name="BancoUP" transaction-type="JTA">
+    <jta-data-source>jdbc/bancaBD</jta-data-source>
+    <class>co.edu.ucentral.banca.models.PagoServicio</class>
+    <class>co.edu.ucentral.banca.models.Transaccion</class>
+    <class>co.edu.ucentral.banca.models.Rol</class>
+    <class>co.edu.ucentral.banca.models.Cuenta</class>
+    <class>co.edu.ucentral.banca.models.EmpresaServicio</class>
+    <class>co.edu.ucentral.banca.models.CuentaTipo</class>
+    <class>co.edu.ucentral.banca.models.Token</class>
+    <class>co.edu.ucentral.banca.models.Movimiento</class>
+    <class>co.edu.ucentral.banca.models.Cliente</class>
+  </persistence-unit>
+</persistence>

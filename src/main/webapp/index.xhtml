@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Oferta de cursos!</title>
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <h:outputScript name="bootstrap/js/bootstrap.bundle.min.js"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/plantillas/header.xhtml">
+            <ui:define name="content">
+                <h2 class="text-center text-dark font-weight-lighter">Banca Virtual!</h2>
+                <img src="./img/inicio.jpg" width="1110px" height="300px" alt="alt"/>
+                <h:form>
+                    <h:commandButton class="btn btn-dark btn-block mt-2 mb-2" value="Clientes" action="listadoClientes"></h:commandButton>
+                    <h:commandButton class="btn btn-warning btn-block mt-2 mb-2" value="Iniciar Sesión" action="iniciarSesion"></h:commandButton>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                        http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+    version="2.3">
+
+    <navigation-rule id="1">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="2">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>listadoClientes</from-outcome>
+            <to-view-id>/pages/cliente/listadoClientes.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="3">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>registrarse</from-outcome>
+            <to-view-id>/pages/cliente/registrarse.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="4">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>iniciarSesion</from-outcome>
+            <to-view-id>/pages/cliente/iniciarSesion.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="5">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>inicioBanca</from-outcome>
+            <to-view-id>/pages/banca/inicioBanca.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+</faces-config>

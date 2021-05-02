@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Alumnos!</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+            <ui:define name="content">
+                    <h4 class="text-sm-right "><small>Bienvenido/a !</small></h4>
+                    <div class="card border-primary mb-3">
+                        <div class="card-header">Listado Clientes!</div>
+                        <div class="card-body text-primary">
+                            <h:form>
+                                <h:dataTable class="table table-hover border-dark" value="#{clienBean.clientes}" var="cliente">
+                                    <h:column>
+                                        <f:facet name="header">ID</f:facet>
+                                        <h:outputText value="#{cliente.id}"></h:outputText>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Nombre Usuario</f:facet>
+                                        <h:outputText value="#{cliente.nombreUsuario}"></h:outputText>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Correo</f:facet>
+                                        <h:outputText value="#{cliente.correo}"></h:outputText>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+                        </div>
+                    </div>
+                </ui:define>
+            </ui:composition>
+        </h:form>
+    </h:body>
+</html>

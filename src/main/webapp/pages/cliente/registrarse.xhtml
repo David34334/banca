@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registrarse</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+            <ui:define name="content">
+                <div class="card border-dark mb-3">
+                    <div class="card-header">Registro de Clientes!</div>
+                    <div class="card-body text-dark">
+                        <h:form>
+                            <div class="text-center">
+                                <img src="../../img/banco2.png" width="150px" height="150px" alt="alt"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="foto" class="control-label col-sm-4" value="Nombre de Usuario"></h:outputLabel>
+                                <h:inputText required="true" id="foto" value="#{clienBean.cliente.nombreUsuario}" class="form-control">
+                                    <f:validateLength minimum="3" maximum="45"></f:validateLength>
+                                </h:inputText>
+                                <h:message for="foto" class="form-control alert alert-danger"></h:message>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="nombre" class="control-label col-sm-4" value="Correo"></h:outputLabel>
+                                <h:inputText required="true" id="nombre" value="#{clienBean.cliente.correo}" class="form-control">
+                                    <f:validateLength minimum="3" maximum="45"></f:validateLength>
+                                </h:inputText>
+                                <h:message for="nombre" class="form-control alert alert-danger"></h:message>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="apellido" class="control-label col-sm-4" value="Clave"></h:outputLabel>
+                                <h:inputText  required="true" id="apellido" value="#{clienBean.cliente.clave}" class="form-control"></h:inputText>
+                                <h:message for="apellido" class="form-control alert alert-danger"></h:message>
+                            </div>
+                            <div class="form-group">
+                                <h:commandButton value="Enviar" action="#{clienBean.guardarCliente()}" class="btn btn-dark btn-block"></h:commandButton>
+                            </div>
+                        </h:form>
+                        <h:form>
+                            <h:commandButton value="¿Ya tienes una cuenta? ¡clic acá!" class="btn btn-info btn-block" action="iniciarSesion"></h:commandButton>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
