@@ -4,31 +4,38 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Alumnos!</title>
+        <title>Perfil Cliente</title>
     </h:head>
     <h:body>
         <h:form rendered="#{clienBean.verificarSesion}">
             <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
             <ui:define name="content">
-                    <h4 class="text-sm-right "><small>Bienvenido/a !</small></h4>
+                <h4 class="text-sm-right font-weight-light"><small>Bienvenido/a #{clienBean.clienteSesion.nombreUsuario}!</small></h4>
                     <div class="card border-primary mb-3">
-                        <div class="card-header font-weight-lighter">Perfil de Usuario</div>
+                        <div class="card-header font-weight-lighter">Perfil de Usuario!</div>
                         <div class="card-body text-primary">
                             <h:form>
-                                <h:dataTable class="table table-hover border-dark" value="#{clienBean.clientes}" var="cliente">
+                                <h:dataTable class="table table-hover border-dark">
                                     <h:column>
                                         <f:facet name="header">ID</f:facet>
-                                        <h:outputText value="#{cliente.id}"></h:outputText>
+                                        <h:outputText value="#{clienBean.clienteSesion.id}"></h:outputText>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Nombre Usuario</f:facet>
-                                        <h:outputText value="#{cliente.nombreUsuario}"></h:outputText>
+                                        <h:outputText value="#{clienBean.clienteSesion.nombreUsuario}"></h:outputText>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Correo</f:facet>
-                                        <h:outputText value="#{cliente.correo}"></h:outputText>
+                                        <h:outputText value="#{clienBean.clienteSesion.correo}"></h:outputText>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Rol</f:facet>
+                                        <h:outputText value="#{clienBean.clienteSesion.idRol.nombreRol}"></h:outputText>
                                     </h:column>
                                 </h:dataTable>
+                            </h:form>
+                            <h:form>
+                                <h:commandButton class="btn btn-warning btn-block mt-2 mb-2" value="Editar" action="editarCliente"></h:commandButton>
                             </h:form>
                         </div>
                     </div>

@@ -20,7 +20,8 @@
                     <div class="navbar-nav">
                         <h:commandLink class="nav-link active" action="index">Home</h:commandLink>
                         <c:if test="#{clienBean.verificarSesion() == true}">
-                            <h:commandLink class="nav-link active" action="inicioBanca">Productos</h:commandLink>
+                            <h:commandLink class="nav-link active" action="perfilCliente">Perfil</h:commandLink>
+                            <h:commandLink class="nav-link active" action="productosBanca">Productos</h:commandLink>
                         </c:if>
                     </div>
                 </div>

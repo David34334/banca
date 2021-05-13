@@ -11,20 +11,22 @@
         <h:form rendered="#{clienBean.verificarSesion}">
             <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
                 <ui:define name="content">
-                    <h4 class="text-sm-right "><small>Bienvenido/a #{clienBean.clienteSesion.nombreUsuario} !</small></h4>
-                    <img src="../../img/inicio.jpg" width="1110px" height="300px" alt="alt"/>
-                    <h2 class="text-center text-dark font-weight-lighter">Consulta nuestros productos!</h2>
+                    <h4 class="text-sm-right "><small>Bienvenido/a #{clienBean.clienteSesion.nombreUsuario} #{clienBean.clienteSesion.id} !</small></h4>
+                    <div class="text-center">
+                        <img src="../../img/banco2.png" width="200px" height="200px" alt="alt"/>
+                    </div>
+                    <h2 class="text-center text-dark font-weight-lighter mb-4">Consulta nuestros productos!</h2>
 
-                    <div class="card text-center">
+                    <div class="card text-center mt-3">
                         <div class="card-header">
                             Cuenta de Ahorros
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">¡Abre tu cuenta de ahorros en un clic!</h5>
-                            <img src="../../img/producto.png" width="400px" height="200px" alt="alt"/>
+                            <img src="../../img/card.png" width="250px" height="250px" alt="alt"/>
                             <p class="card-text">Abre tu cuenta de ahorros o nómina y hazte cliente en unos minutos. La tarjeta te la enviaremos sin costo a tu casa o puedes recogerla en la oficina que prefieras.</p>
                             <h:form>
-                                <h:commandButton class="btn btn-warning btn-block" value="Crear Cuenta!" action="index"></h:commandButton>
+                                <h:commandButton class="btn btn-warning btn-block" value="Crear Cuenta!" action="#{clienBean.crearCuentaAhorros()}"></h:commandButton>
                             </h:form>
                         </div>
                         <div class="card-footer text-muted">
@@ -38,10 +40,10 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">¡Abre tu cuenta corriente en un clic!</h5>
-                            <img src="../../img/producto.png" width="400px" height="200px" alt="alt"/>
+                            <img src="../../img/card.png" width="250px" height="250px" alt="alt"/>
                             <p class="card-text">Abre tu cuenta corriente y hazte cliente en unos minutos. La tarjeta te la enviaremos sin costo a tu casa o puedes recogerla en la oficina que prefieras.</p>
                             <h:form>
-                                <h:commandButton class="btn btn-warning btn-block" value="Crear Cuenta!" action="index"></h:commandButton>
+                                <h:commandButton class="btn btn-warning btn-block" value="Crear Cuenta!" action="#{clienBean.crearCuentaCorriente()}"></h:commandButton>
                             </h:form>
                         </div>
                         <div class="card-footer text-muted">

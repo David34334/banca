@@ -14,11 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "cuenta")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cuenta.findAll", query = "SELECT c FROM Cuenta c"),
     @NamedQuery(name = "Cuenta.findByIdCuenta", query = "SELECT c FROM Cuenta c WHERE c.idCuenta = :idCuenta"),
@@ -38,7 +36,7 @@ public class Cuenta implements Serializable {
     private Integer saldo;
     @Column(name = "estado_cuenta")
     private Integer estadoCuenta;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
     @JoinColumn(name = "id_Cliente")
     private Cliente idCliente;
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})

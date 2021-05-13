@@ -11,12 +11,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
 @Table(name = "empresa_servicio")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "EmpresaServicio.findAll", query = "SELECT e FROM EmpresaServicio e"),
     @NamedQuery(name = "EmpresaServicio.findByIdEmpresa", query = "SELECT e FROM EmpresaServicio e WHERE e.idEmpresa = :idEmpresa"),

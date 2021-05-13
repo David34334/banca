@@ -41,5 +41,26 @@
             <to-view-id>/pages/banca/inicioBanca.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule id="6">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>perfilCliente</from-outcome>
+            <to-view-id>/pages/banca/perfilCliente.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="8">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>productosBanca</from-outcome>
+            <to-view-id>/pages/banca/productosBanca.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="9">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>infoCuenta</from-outcome>
+            <to-view-id>/pages/banca/infoCuenta.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
 </faces-config>

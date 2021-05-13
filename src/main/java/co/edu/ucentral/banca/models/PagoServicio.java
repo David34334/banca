@@ -16,12 +16,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
 @Table(name = "pago_servicios")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "PagoServicio.findAll", query = "SELECT p FROM PagoServicio p"),
     @NamedQuery(name = "PagoServicio.findByFacturaServicio", query = "SELECT p FROM PagoServicio p WHERE p.facturaServicio = :facturaServicio"),
@@ -52,7 +50,7 @@ public class PagoServicio implements Serializable {
     @Size(max = 20)
     @Column(name = "fecha")
     private String fecha;
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "id_movimiento")
     private Movimiento idMovimiento;
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})

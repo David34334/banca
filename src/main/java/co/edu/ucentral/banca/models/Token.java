@@ -14,12 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
 @Table(name = "token")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Token.findAll", query = "SELECT t FROM Token t"),
     @NamedQuery(name = "Token.findById", query = "SELECT t FROM Token t WHERE t.id = :id"),

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Perfil Cliente</title>
+    </h:head>
+    <h:body>
+        <h:form rendered="#{clienBean.verificarSesion}">
+            <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+                <ui:define name="content">
+                    <hr/>
+                    <div class="text-center font-weight-bolder">Resumen de tu #{clienBean.cuenta.idTipoCuenta.nombreCuenta}</div>
+                    <hr/>
+                    <div class="card-header font-weight-lighter">Datos de tu cuenta!</div>
+                    <h:form>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"># Cuenta</th>
+                                    <th scope="col">Tipo de Cuenta</th>
+                                    <th scope="col">Titular</th>
+                                    <th scope="col">Correo Titular</th>
+                                    <th scope="col">Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th class="font-weight-lighter" scope="row">#{clienBean.cuenta.idCuenta}</th>
+                                    <td class="font-weight-lighter">#{clienBean.cuenta.idTipoCuenta.nombreCuenta}</td>
+                                    <td class="font-weight-lighter">#{clienBean.cuenta.idCliente.nombreUsuario}</td>
+                                    <td class="font-weight-lighter">#{clienBean.cuenta.idCliente.correo}</td>
+                                    <td class="font-weight-lighter">$COP #{clienBean.cuenta.saldo}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr/>
+                        <div class="text-center font-weight-bolder">Panel de Usuario</div>
+                        <hr/>
+                        <div class="justify-content-center text-center row mt-2">
+                            <div class="card mx-5 mb-4" style="width: 13rem; height: 25rem;">
+                                <img class="card-img-top justify-content-center" alt="..." src="../../img/movimientos.png"/>
+                                <hr/>
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-lighter">Movimientos</h5>
+                                    <h:commandButton class="btn btn-warning" value="Ver Movimientos" action="sdsd"></h:commandButton>
+                                </div>
+                            </div>
+                            <div class="card mx-5 mb-4" style="width: 13rem; height: 25rem;">
+                                <img class="card-img-top" alt="..." src="../../img/transferencia.png"/>
+                                <hr/>
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-lighter">Transferencia</h5>
+                                    <h:commandButton class="btn btn-success" value="Transferir" action="asd"></h:commandButton>
+                                </div>
+                            </div>
+                            <div class="card mx-5 mb-4" style="width: 13rem; height: 25rem;">
+                                <img class="card-img-top" alt="..." src="../../img/pago.png"/>
+                                <hr/>
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-lighter">Pago Servicios</h5>
+                                    <h:commandButton class="btn btn-dark" value="Pago Servicios" action="asd"></h:commandButton>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="text-center font-weight-bolder">SALDO DISPONIBLE: $COP #{clienBean.cuenta.saldo}</div>
+                        <hr/>
+                    </h:form>
+                </ui:define>
+            </ui:composition>
+        </h:form>
+    </h:body>
+</html>

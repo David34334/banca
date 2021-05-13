@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Tus Productos!</title>
+    </h:head>
+    <h:body>
+        <h:form rendered="#{clienBean.verificarSesion}">
+            <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+                <ui:define name="content">
+                    <h4 class="text-sm-right font-weight-light"><small>Bienvenido/a #{clienBean.clienteSesion.nombreUsuario} !</small></h4>
+                    <c:if test="#{clienBean.verificarCuentaCliente() == true}">
+                        <h:form>
+                            <h:dataTable class="table" value="#{clienBean.cuentasCliente}" var="cuenta">
+                                <h:column>
+                                    <f:facet class="font-weight-light" name="header">Numero de Cuenta</f:facet>
+                                    <h:outputText class="font-weight-light" value="#{cuenta.idCuenta}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet class="font-weight-light" name="header">Tipo de Cuenta</f:facet>
+                                    <h:outputText class="font-weight-light" value="#{cuenta.idTipoCuenta.nombreCuenta}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet class="font-weight-light" name="header">Titular</f:facet>
+                                    <h:outputText class="font-weight-light" value="#{cuenta.idCliente.nombreUsuario}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet class="font-weight-light" name="header">Activa</f:facet>
+                                    <h:outputText class="font-weight-light" value="#{cuenta.estadoCuenta}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet class="font-weight-light" name="header">Tools</f:facet>
+                                    <h:commandButton action="#{clienBean.verInfoCuenta(cuenta.idCuenta)}" value="Ver Info" class="btn btn-warning btn-sm"></h:commandButton>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+                    </c:if>
+                    <c:if test="#{clienBean.verificarCuentaCliente() == false}">
+                        <div class="alert alert-danger" role="alert">
+                            No tienes <b>productos</b> con la entidad!
+                        </div>
+                    </c:if>  
+                </ui:define>
+            </ui:composition>
+        </h:form>
+    </h:body>
+</html>
