@@ -44,7 +44,7 @@
                                 <hr/>
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-lighter">Movimientos</h5>
-                                    <h:commandButton class="btn btn-warning" value="Ver Movimientos" action="sdsd"></h:commandButton>
+                                    <h:commandButton class="btn btn-warning" value="Ver Movimientos" action="#{cuentaBean.verMovimientosCuenta(clienBean.cuenta.idCuenta)}"></h:commandButton>
                                 </div>
                             </div>
                             <div class="card mx-5 mb-4" style="width: 13rem; height: 25rem;">
@@ -52,7 +52,7 @@
                                 <hr/>
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-lighter">Transferencia</h5>
-                                    <h:commandButton class="btn btn-success" value="Transferir" action="asd"></h:commandButton>
+                                    <h:commandButton class="btn btn-success" value="Transferir" action="#{cuentaBean.transferirDinero(clienBean.cuenta.idCuenta)}"></h:commandButton>
                                 </div>
                             </div>
                             <div class="card mx-5 mb-4" style="width: 13rem; height: 25rem;">
@@ -60,7 +60,7 @@
                                 <hr/>
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-lighter">Pago Servicios</h5>
-                                    <h:commandButton class="btn btn-dark" value="Pago Servicios" action="asd"></h:commandButton>
+                                    <h:commandButton class="btn btn-dark" value="Pago Servicios" action="#{cuentaBean.realizarPagoServicio(clienBean.cuenta.idCuenta)}"></h:commandButton>
                                 </div>
                             </div>
                         </div>

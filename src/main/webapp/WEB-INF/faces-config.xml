@@ -62,5 +62,47 @@
             <to-view-id>/pages/banca/infoCuenta.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule id="11">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>errorTransaccionFondos</from-outcome>
+            <to-view-id>/pages/error/errorTransaccionFondos.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="12">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>errorCuentaDestino</from-outcome>
+            <to-view-id>/pages/error/errorCuentaDestino.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="13">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>transferenciaRealizada</from-outcome>
+            <to-view-id>/pages/banca/transferenciaRealizada.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="14">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>pasarelaTransferencia</from-outcome>
+            <to-view-id>/pages/banca/pasarelaTransferencia.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="15">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>movimientosCuenta</from-outcome>
+            <to-view-id>/pages/banca/movimientosCuenta.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="16">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>irPagoServicio</from-outcome>
+            <to-view-id>/pages/banca/irPagoServicio.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
 </faces-config>

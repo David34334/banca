@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Perfil Cliente</title>
+    </h:head>
+    <h:body>
+        <h:form rendered="#{clienBean.verificarSesion}">
+            <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+                <ui:define name="content">
+                    <c:if test="#{cuentaBean.movimientosCuenta.size() le 0}">
+                        <div class="alert alert-dark" role="alert">
+                            Tu cuenta aún no presenta movimientos!
+                        </div>
+                    </c:if>
+                    <c:if test="#{cuentaBean.movimientosCuenta.size() gt 0}">
+                        <hr/>
+                        <div class="text-center font-weight-bolder">Resumen de tu #{clienBean.cuenta.idTipoCuenta.nombreCuenta}</div>
+                        <hr/>
+                        <div class="card-header font-weight-lighter">Datos de tu cuenta!</div>
+                        <h:form>
+                            <h:dataTable class="table" value="#{cuentaBean.movimientosCuenta}" var="movimiento">
+                                <h:column>
+                                    <f:facet name="header">N° Facturación</f:facet>
+                                    <h:outputText value="#{movimiento.numeroFacturacion}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"># Cuenta</f:facet>
+                                    <h:outputText value="#{movimiento.idCuenta.idCuenta}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Descripción del Movimiento</f:facet>
+                                    <h:outputText value="#{movimiento.descripcion}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Tipo de Cuenta</f:facet>
+                                    <h:outputText value="#{movimiento.idCuenta.idTipoCuenta.nombreCuenta}"></h:outputText>
+                                </h:column>
+                            </h:dataTable>
+                            <h:commandButton class="btn btn-dark btn-block" value="Volver" action="inicioBanca"></h:commandButton>
+                        </h:form>
+                    </c:if>
+                </ui:define>
+            </ui:composition>
+        </h:form>
+    </h:body>
+</html>

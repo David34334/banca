@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registrarse</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+            <ui:define name="content">   
+                <div class="card-header">Iniciar Sesión</div>
+                <h:form>
+                    <div class="text-center">
+                        <img src="../../img/banco2.png" width="150px" height="150px" alt="alt"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="cuentaDestino" class="control-label col-sm-4" value="# Cuenta Destino:"></h:outputLabel>
+                        <h:inputText  required="true" id="cuentaDestino" value="#{cuentaBean.idCuentaDestino}" class="form-control"></h:inputText>
+                        <h:message for="cuentaDestino" class="form-control alert alert-danger"></h:message>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="valor" class="control-label col-sm-4" value="Valor:"></h:outputLabel>
+                        <h:inputText required="true" id="valor" value="#{cuentaBean.valorATransferir}" class="form-control"></h:inputText>
+                        <h:message for="valor" class="form-control alert alert-danger"></h:message>
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Aceptar" action="#{cuentaBean.transferirCuentaDestino(cuentaBean.idCuentaDestino, cuentaBean.valorATransferir)}" class="btn btn-dark btn-block"></h:commandButton>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

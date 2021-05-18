@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Error Transaccion!</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+            <ui:define name="content">
+                <div class="alert alert-danger" role="alert">
+                    No tienes <b>saldo</b> suficiente para realizar esta operación!
+                </div>
+                <div class="font-weight-lighter">Tu cuenta tiene un saldo de: ${cuentaBean.cuenta.saldo} que no
+                    alcanza a cubrir el pago de: ${cuentaBean.valorATransferir}, vuelve a intentarlo con un monto menor
+                    o deposita dinero en tu cuenta!</div>
+                <h:commandButton class="btn btn-block btn-danger mt-2" value="Volver" action="transferirDinero"></h:commandButton>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Error Transaccion!</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+            <ui:define name="content">
+                <div class="alert alert-danger" role="alert">
+                    La cuenta <b>#{cuentaBean.cuentaDestino.idCuenta}</b> no existe o está desactivada!
+                </div>
+                <div class="font-weight-lighter">Intentaste transferir dinero a la cuenta: <b>#{cuentaBean.idCuentaDestino}</b> que no
+                    existe o se encuentra desativada en estos momentos. Vuelve a intentarlo con un numero de cuenta 
+                    diferente o cancela la operación!</div>
+                <h:form>
+                    <h:commandButton class="btn btn-block btn-danger mt-3" value="Volver" action="pasarelaTransferencia"></h:commandButton>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

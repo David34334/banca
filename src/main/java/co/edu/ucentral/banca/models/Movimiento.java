@@ -34,7 +34,7 @@ public class Movimiento implements Serializable {
     @Column(name = "numero_facturacion")
     private Integer numeroFacturacion;
     @Column(name = "descripcion")
-    private Integer descripcion;
+    private String descripcion;
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "id_Cuenta")
     private Cuenta idCuenta;
@@ -62,11 +62,11 @@ public class Movimiento implements Serializable {
         this.numeroFacturacion = numeroFacturacion;
     }
 
-    public Integer getDescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(Integer descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 

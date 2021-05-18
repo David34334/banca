@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Resumen de tu Transferencia</title>
+    </h:head>
+    <h:body>
+        <h:form rendered="#{clienBean.verificarSesion}">
+            <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+                <ui:define name="content">
+                    <hr/>
+                        <h4 class="card-header text-center font-weight-bolder">¡Felicidades, ha realizado la transferencia con éxito!</h4>
+                    <hr/>
+                    <div class="card-body text-dark">
+                        <h:form>
+                            <h4>Datos del Transferencia</h4>
+                            <h:outputLabel for="NumeroFactura" class="control-label col-sm-4 font-weight-bolder" value="Factura N°: "></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.transaccion.idTransaccion}"></h:outputText>
+                            <h:outputLabel for="Fecha" class="control-label col-sm-4 font-weight-bolder" value="Fecha Transacción: "></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.transaccion.fecha}"></h:outputText>
+                            <h:outputLabel for="Descripcion" class="control-label col-sm-4 mt-1 font-weight-bolder" value="Descripción del Movimiento: "></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.transaccion.idMovimiento.descripcion}"></h:outputText>
+                            <h:outputLabel for="CuentaOrigen" class="control-label col-sm-4 font-weight-bolder" value="Cuenta Origen: #{cuentaBean.cuenta.idTipoCuenta.nombreCuenta}"></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="# - #{cuentaBean.transaccion.idMovimiento.idCuenta}"></h:outputText>
+                            <h:outputLabel for="CuentaDestino" class="control-label col-sm-4 mt-1 font-weight-bolder" value="Cuenta Destino: #{cuentaBean.cuentaDestino.idTipoCuenta.nombreCuenta}"></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="# - #{cuentaBean.cuentaDestino.idCuenta}"></h:outputText>
+                            <h:outputLabel for="Monto" class="control-label col-sm-4 mt-1 font-weight-bolder" value="Valor: "></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="# - #{cuentaBean.valorATransferir}"></h:outputText>
+                            <h:commandButton class="btn btn-success btn-block" value="volver" action="infoCuenta"></h:commandButton>
+                        </h:form>
+                    </div>
+                </ui:define>
+            </ui:composition>
+        </h:form>
+    </h:body>
+</html>
