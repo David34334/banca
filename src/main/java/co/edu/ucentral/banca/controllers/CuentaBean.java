@@ -119,7 +119,7 @@ public class CuentaBean implements Serializable {
 
             if (cuenta.getSaldo() < valorTransferir) {
                 return "errorTransaccionFondos";
-            } else if (valorTransferir <= 1000) {
+            } else if (valorTransferir < 1000) {
                 return "errorValorTransferencia";
             }
 
