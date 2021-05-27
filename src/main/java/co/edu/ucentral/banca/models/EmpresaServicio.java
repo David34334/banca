@@ -12,7 +12,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-
 @Entity
 @Table(name = "empresa_servicio")
 @NamedQueries({
@@ -21,7 +20,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "EmpresaServicio.findByNombreEmpresa", query = "SELECT e FROM EmpresaServicio e WHERE e.nombreEmpresa = :nombreEmpresa"),
     @NamedQuery(name = "EmpresaServicio.findByNombreServicio", query = "SELECT e FROM EmpresaServicio e WHERE e.nombreServicio = :nombreServicio"),
     @NamedQuery(name = "EmpresaServicio.findByNumeroReferencia", query = "SELECT e FROM EmpresaServicio e WHERE e.numeroReferencia = :numeroReferencia"),
-    @NamedQuery(name = "EmpresaServicio.findByEstadoEmpresa", query = "SELECT e FROM EmpresaServicio e WHERE e.estadoEmpresa = :estadoEmpresa")})
+    @NamedQuery(name = "EmpresaServicio.findByEstadoEmpresa", query = "SELECT e FROM EmpresaServicio e WHERE e.estadoEmpresa = :estadoEmpresa"),
+    @NamedQuery(name = "EmpresaServicio.findByValor", query = "SELECT e FROM EmpresaServicio e WHERE e.valor = :valor"),
+    @NamedQuery(name = "EmpresaServicio.findByLogoEmpresa", query = "SELECT e FROM EmpresaServicio e WHERE e.logoEmpresa = :logoEmpresa")})
 public class EmpresaServicio implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,6 +41,12 @@ public class EmpresaServicio implements Serializable {
     private Integer numeroReferencia;
     @Column(name = "estado_empresa")
     private Integer estadoEmpresa;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "valor")
+    private Double valor;
+    @Size(max = 255)
+    @Column(name = "logoEmpresa")
+    private String logoEmpresa;
 
     public EmpresaServicio() {
     }
@@ -86,6 +93,22 @@ public class EmpresaServicio implements Serializable {
 
     public void setEstadoEmpresa(Integer estadoEmpresa) {
         this.estadoEmpresa = estadoEmpresa;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
+    public String getLogoEmpresa() {
+        return logoEmpresa;
+    }
+
+    public void setLogoEmpresa(String logoEmpresa) {
+        this.logoEmpresa = logoEmpresa;
     }
 
     @Override

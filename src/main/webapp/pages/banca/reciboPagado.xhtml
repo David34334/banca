@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Resumen de tu Transferencia</title>
+    </h:head>
+    <h:body>
+        <h:form rendered="#{clienBean.verificarSesion}">
+            <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+                <ui:define name="content">
+                    <hr/>
+                    <h4 class="text-center font-weight-bolder">Pago Servicio: #{cuentaBean.servicio.idEmpresa.nombreServicio}</h4>
+                    <hr/>
+                    <div class="text-dark">
+                        <h4>Has pagado el recibo correspondiente a: #{cuentaBean.servicio.nombreServicio} correctamente!</h4>
+                        <h:outputLabel for="NumeroReferencia" class="control-label col-sm-4 font-weight-bolder" value="Referencia N°: "></h:outputLabel>
+                        <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.servicio.numeroReferencias}"></h:outputText>
+                        <h:outputLabel for="fecha" class="control-label col-sm-4 mt-1 font-weight-bolder" value="Fecha:"></h:outputLabel>
+                        <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.servicio.fecha}"></h:outputText>
+                        <h:outputLabel for="Monto" class="control-label col-sm-4 mt-1 font-weight-bolder" value="Valor A Pagar: "></h:outputLabel>
+                        <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.servicio.idEmpresa.valor}"></h:outputText>
+                        <h:form>
+                            <h:commandButton class="btn btn-dark btn-block" value="Volver" action="infoCuenta"></h:commandButton>
+                        </h:form>
+                    </div>
+                </ui:define>
+            </ui:composition>
+        </h:form>
+    </h:body>
+</html>

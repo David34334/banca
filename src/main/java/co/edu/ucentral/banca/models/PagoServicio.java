@@ -44,7 +44,7 @@ public class PagoServicio implements Serializable {
     @Column(name = "numero_referencias")
     private Integer numeroReferencias;
     @Column(name = "valor")
-    private Integer valor;
+    private Double valor;
     @Column(name = "estado_pago")
     private Integer estadoPago;
     @Size(max = 20)
@@ -88,11 +88,11 @@ public class PagoServicio implements Serializable {
         this.numeroReferencias = numeroReferencias;
     }
 
-    public Integer getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(Integer valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 

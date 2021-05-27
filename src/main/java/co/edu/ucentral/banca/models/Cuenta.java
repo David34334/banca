@@ -33,7 +33,7 @@ public class Cuenta implements Serializable {
     @Column(name = "id_Cuenta")
     private Integer idCuenta;
     @Column(name = "saldo")
-    private Integer saldo;
+    private Double saldo;
     @Column(name = "estado_cuenta")
     private Integer estadoCuenta;
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
@@ -58,11 +58,11 @@ public class Cuenta implements Serializable {
         this.idCuenta = idCuenta;
     }
 
-    public Integer getSaldo() {
+    public Double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Integer saldo) {
+    public void setSaldo(Double saldo) {
         this.saldo = saldo;
     }
 

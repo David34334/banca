@@ -5,10 +5,11 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 @Stateless
 public class EmpresaDAOImpl implements EmpresaDAO {
-    
+
     @PersistenceContext(unitName = "BancoUP")
     EntityManager manager;
 
@@ -35,6 +36,23 @@ public class EmpresaDAOImpl implements EmpresaDAO {
     @Override
     public void deleteEmpresaServicio(EmpresaServicio empresaServicio) {
         manager.remove(manager.merge(empresaServicio));
+    }
+
+    @Override
+    public EmpresaServicio findEmpresaServicioByReferenceNumber(EmpresaServicio empresaServicio) {
+
+        try {
+            TypedQuery<EmpresaServicio> empresa = manager.createNamedQuery("EmpresaServicio.findByNumeroReferencia", EmpresaServicio.class);
+            empresa.setParameter("numeroReferencia", empresaServicio.getNumeroReferencia());
+            EmpresaServicio result = empresa.getSingleResult();
+
+            if (result != null) {
+                return result;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return null;
     }
 
 }

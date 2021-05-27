@@ -24,7 +24,7 @@
                         <h:form>
                             <h:dataTable class="table" value="#{cuentaBean.movimientosCuenta}" var="movimiento">
                                 <h:column>
-                                    <f:facet name="header">N° Facturación</f:facet>
+                                    <f:facet name="header">N° Comprobante</f:facet>
                                     <h:outputText value="#{movimiento.numeroFacturacion}"></h:outputText>
                                 </h:column>
                                 <h:column>
@@ -39,8 +39,14 @@
                                     <f:facet name="header">Tipo de Cuenta</f:facet>
                                     <h:outputText value="#{movimiento.idCuenta.idTipoCuenta.nombreCuenta}"></h:outputText>
                                 </h:column>
+                                <h:column>
+                                    <f:facet name="header">Valor</f:facet>
+                                    <h:outputText value="#{movimiento.valorMovimiento}"></h:outputText>
+                                </h:column>
                             </h:dataTable>
-                            <h:commandButton class="btn btn-dark btn-block" value="Volver" action="inicioBanca"></h:commandButton>
+                        </h:form>
+                        <h:form>
+                            <h:commandButton class="btn btn-dark btn-block" value="Volver" action="infoCuenta"></h:commandButton>
                         </h:form>
                     </c:if>
                 </ui:define>

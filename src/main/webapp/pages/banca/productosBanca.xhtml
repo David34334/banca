@@ -14,6 +14,9 @@
                     <h4 class="text-sm-right font-weight-light"><small>Bienvenido/a #{clienBean.clienteSesion.nombreUsuario} !</small></h4>
                     <c:if test="#{clienBean.verificarCuentaCliente() == true}">
                         <h:form>
+                            <h:commandButton action="infoBanca" value="Volver" class="btn btn-dark btn-block mb-2"></h:commandButton>
+                        </h:form>
+                        <h:form>
                             <h:dataTable class="table" value="#{clienBean.cuentasCliente}" var="cuenta">
                                 <h:column>
                                     <f:facet class="font-weight-light" name="header">Numero de Cuenta</f:facet>

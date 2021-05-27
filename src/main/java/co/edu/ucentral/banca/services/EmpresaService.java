@@ -17,4 +17,6 @@ public interface EmpresaService {
     
     public void eliminarEmpresaServicio(EmpresaServicio empresaServicio);
     
+    public EmpresaServicio encontrarEmpresaPorNumeroReferencia(EmpresaServicio empresaServicio);
+    
 }

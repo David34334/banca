@@ -23,12 +23,12 @@
                             <h:outputLabel for="Descripcion" class="control-label col-sm-4 mt-1 font-weight-bolder" value="Descripción del Movimiento: "></h:outputLabel>
                             <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.transaccion.idMovimiento.descripcion}"></h:outputText>
                             <h:outputLabel for="CuentaOrigen" class="control-label col-sm-4 font-weight-bolder" value="Cuenta Origen: #{cuentaBean.cuenta.idTipoCuenta.nombreCuenta}"></h:outputLabel>
-                            <h:outputText class="form-control font-weight-bolder" value="# - #{cuentaBean.transaccion.idMovimiento.idCuenta}"></h:outputText>
+                            <h:outputText class="form-control font-weight-bolder" value="# - #{cuentaBean.transaccion.idMovimiento.idCuenta.idCuenta}"></h:outputText>
                             <h:outputLabel for="CuentaDestino" class="control-label col-sm-4 mt-1 font-weight-bolder" value="Cuenta Destino: #{cuentaBean.cuentaDestino.idTipoCuenta.nombreCuenta}"></h:outputLabel>
                             <h:outputText class="form-control font-weight-bolder" value="# - #{cuentaBean.cuentaDestino.idCuenta}"></h:outputText>
                             <h:outputLabel for="Monto" class="control-label col-sm-4 mt-1 font-weight-bolder" value="Valor: "></h:outputLabel>
-                            <h:outputText class="form-control font-weight-bolder" value="# - #{cuentaBean.valorATransferir}"></h:outputText>
-                            <h:commandButton class="btn btn-success btn-block" value="volver" action="infoCuenta"></h:commandButton>
+                            <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.valorATransferir}"></h:outputText>
+                            <h:commandButton class="btn btn-success btn-block" value="Volver" action="infoCuenta"></h:commandButton>
                         </h:form>
                     </div>
                 </ui:define>

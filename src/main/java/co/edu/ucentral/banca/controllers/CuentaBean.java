@@ -58,6 +58,7 @@ public class CuentaBean implements Serializable {
     private EmpresaServicio empresa;
     private List<PagoServicio> servicios;
     private PagoServicio servicio;
+    private Integer numeroReferencia;
 
     public CuentaBean() {
     }
@@ -88,16 +89,17 @@ public class CuentaBean implements Serializable {
     }
 
     public String transferirCuentaDestino(Integer idCuentaDest, Integer valorTransferir) {
-        int saldo = 0;
+        double saldo = 0;
         //Se crea el movimiento
         movimiento = new Movimiento();
-        movimiento.setDescripcion("Transferencia desde Cuenta de Ahorros");
+        movimiento.setDescripcion("Transferencia desde " + cuenta.getIdTipoCuenta().getNombreCuenta());
         Random r = new Random();
         int n = r.nextInt(99999999 - 11111111 + 1) + 11111111;
         movimiento.setNumeroFacturacion(n);
         movimiento.setIdCuenta(cuenta);
-        this.movimientoService.guardarMovimiento(movimiento);
-
+        String valor = Integer.toString(valorTransferir);
+        Double valorMovimiento = Double.parseDouble(valor);
+        movimiento.setValorMovimiento(valorMovimiento);
         //Se crea la transacción a partir del movimiento
         transaccion = new Transaccion();
         //Se obtiene la fecha de la transaccion
@@ -117,6 +119,8 @@ public class CuentaBean implements Serializable {
 
             if (cuenta.getSaldo() < valorTransferir) {
                 return "errorTransaccionFondos";
+            } else if (valorTransferir <= 1000) {
+                return "errorValorTransferencia";
             }
 
             saldo = cuenta.getSaldo() - valorTransferir;
@@ -129,6 +133,9 @@ public class CuentaBean implements Serializable {
 
             valorATransferir = valorTransferir;
             
+            this.cuentaService.actualizarCuenta(cuenta);
+            this.cuentaService.actualizarCuenta(cuentaDestino);
+            this.movimientoService.guardarMovimiento(movimiento);
             this.transaccionService.guardarTransaccion(transaccion);
             return "transferenciaRealizada";
         }
@@ -148,7 +155,7 @@ public class CuentaBean implements Serializable {
         cuenta = new Cuenta();
         cuenta.setIdCuenta(idCuenta);
         cuenta = cuentaService.encontrarCuentaPorID(cuenta);
-        
+
         return "irPagoServicio";
     }
     
@@ -156,27 +163,53 @@ public class CuentaBean implements Serializable {
         empresa = new EmpresaServicio();
         empresa.setIdEmpresa(idEmpresa);
         empresa = empresaService.encontrarEmpresaServicioPorID(empresa);
-        
-        movimiento = new Movimiento();
-        Random r = new Random();
-        int n = r.nextInt(99999999 - 11111111 + 1) + 11111111;
-        movimiento.setNumeroFacturacion(n);
-        movimiento.setDescripcion("Pago de Servicio Público: " + empresa.getNombreServicio());
-        movimiento.setIdCuenta(cuenta);
-        
-        servicio = new PagoServicio();
-        servicio.setIdEmpresa(empresa);
-        servicio.setIdMovimiento(movimiento);
-        servicio.setNombreServicio("Servicio: " + empresa.getNombreServicio());
-        Date date = new Date();
-        servicio.setFecha(new SimpleDateFormat("dd-MM-yyyy").format(date));
-        int f = r.nextInt(99999999 - 11111111 + 1) + 11111111;
-        servicio.setNumeroReferencias(f);
-        servicio.setValor(f);
-        
-        
-        return "resumenPagoServicio";
+        return "pasarelaPagoServicio";
     }
+    
+    public String reciboServicio(Integer numeroReferencia) {
+        empresa = new EmpresaServicio();
+        empresa.setNumeroReferencia(numeroReferencia);
+        empresa = empresaService.encontrarEmpresaPorNumeroReferencia(empresa);
+        
+        if(empresa != null) {
+            movimiento = new Movimiento();
+            Random r = new Random();
+            int n = r.nextInt(99999999 - 11111111 + 1) + 11111111;
+            movimiento.setNumeroFacturacion(n);
+            movimiento.setDescripcion("Pago de Servicio Público: " + empresa.getNombreServicio());
+            movimiento.setIdCuenta(cuenta);
+            movimiento.setValorMovimiento(empresa.getValor());
+            
+            servicio = new PagoServicio();
+            servicio.setIdEmpresa(empresa);
+            servicio.setIdMovimiento(movimiento);
+            servicio.setNombreServicio("Servicio: " + empresa.getNombreServicio());
+            Date date = new Date();
+            servicio.setFecha(new SimpleDateFormat("dd-MM-yyyy").format(date));
+            servicio.setNumeroReferencias(empresa.getNumeroReferencia());
+            servicio.setEstadoPago(0);
+            servicio.setValor(empresa.getValor());
+            
+            return "pagoServicio";
+        }
+        
+        return "errorNumeroReferencia";
+    }
+    
+    public String pagarServicio() {
+        double saldoFinal;
+        if(cuenta.getSaldo() >= empresa.getValor()) {
+            saldoFinal = cuenta.getSaldo() - empresa.getValor();
+            cuenta.setSaldo(saldoFinal);
+            servicio.setEstadoPago(1);
+            this.cuentaService.actualizarCuenta(cuenta);
+            this.movimientoService.guardarMovimiento(movimiento);
+            this.pagoService.guardarPagoServicio(servicio);
+            return "reciboPagado";
+        }   
+        return "errorPagoServicio";
+    }
+    
 
     public Cuenta getCuenta() {
         return cuenta;
@@ -288,6 +321,14 @@ public class CuentaBean implements Serializable {
 
     public void setServicio(PagoServicio servicio) {
         this.servicio = servicio;
+    }
+
+    public Integer getNumeroReferencia() {
+        return numeroReferencia;
+    }
+
+    public void setNumeroReferencia(Integer numeroReferencia) {
+        this.numeroReferencia = numeroReferencia;
     }
 
 }

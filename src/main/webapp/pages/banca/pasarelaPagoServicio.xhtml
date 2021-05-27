@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registrarse</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+            <ui:define name="content">   
+                <div class="card border-dark mb-3">
+                    <div class="card-header">Pago Servicios</div>
+                    <div class="card-body text-dark">
+                        <h:form>
+                            <div class="text-center">
+                                <img src="../../img/banco2.png" width="150px" height="150px" alt="alt"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="referencia" class="control-label col-sm-4" value="Ingresa el número de referencia:"></h:outputLabel>
+                                <h:inputText  required="true" id="referencia" value="#{cuentaBean.numeroReferencia}" class="form-control"></h:inputText>
+                            </div>
+                            <div class="form-group">
+                                <h:commandButton value="Ingresar" action="#{cuentaBean.reciboServicio(cuentaBean.numeroReferencia)}" class="btn btn-dark btn-block"></h:commandButton>
+                            </div>
+                        </h:form>
+                        <h:form>
+                            <h:commandButton value="Cancelar Operación" action="irPagoServicio" class="btn btn-warning btn-block"></h:commandButton>                            
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

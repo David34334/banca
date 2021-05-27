@@ -14,31 +14,27 @@
                     <hr/>
                     <div class="text-center font-weight-bolder">Servicios Públicos</div>
                     <hr/>
+                    <h:form>
+                        <h:commandButton class="btn btn-dark btn-block mt-3 mb-2" value="Volver" action="infoCuenta"></h:commandButton>
+                    </h:form>
                     <div class="card-header font-weight-lighter">Paga tus Servicios sin salir de casa!</div>
                     <h:form>
-                        <h:dataTable class="table" value="#{cuentaBean.empresas}" var="empresa">
-                            <c:if test="#{empresa.estadoEmpresa eq 1}">
-                                <h:inputHidden id="id" value="#{empresa.idEmpresa}"></h:inputHidden>
-                                <h:column>
-                                    <f:facet name="header">Empresa</f:facet>
-                                    <h:outputText value="#{empresa.nombreEmpresa}"></h:outputText>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">Servicio</f:facet>
-                                    <h:outputText value="#{empresa.nombreServicio}"></h:outputText>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">Número de Referencia</f:facet>
-                                    <h:outputText value="#{empresa.numeroReferencia}"></h:outputText>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header"></f:facet>
-                                    <h:commandButton value="Pagar" action="#{cuentaBean}" class="btn btn-dark"></h:commandButton>
-                                </h:column>
-                            </c:if>
-                        </h:dataTable>
+                        <div class="justify-content-center text-center row mt-4">
+                            <c:forEach items="#{cuentaBean.empresas}" var="empresa">
+                                <div class="card mx-5 mb-4" style="width: 13rem; height: 25rem;">
+                                    <img class="card-img-top" alt="..." src="../../img/#{empresa.logoEmpresa}"/>
+                                    <hr/>
+                                    <div class="card-body mt-2">
+                                        <h:inputHidden value="#{empresa.idEmpresa}"></h:inputHidden>
+                                        <h5 class="card-title font-weight-lighter">#{empresa.nombreEmpresa}</h5>
+                                        <h:commandButton class="btn btn-dark mt-3" value="Pagar" action="#{cuentaBean.irPagarServicio(empresa.idEmpresa)}"></h:commandButton>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
                     </h:form>
                 </ui:define>
             </ui:composition>
+        </h:form>
     </h:body>
 </html>

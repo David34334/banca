@@ -37,4 +37,9 @@ public class EmpresaServiceImpl implements EmpresaService {
         empresaDAO.deleteEmpresaServicio(empresaServicio);
     }
 
+    @Override
+    public EmpresaServicio encontrarEmpresaPorNumeroReferencia(EmpresaServicio empresaServicio) {
+        return empresaDAO.findEmpresaServicioByReferenceNumber(empresaServicio);
+    }
+
 }

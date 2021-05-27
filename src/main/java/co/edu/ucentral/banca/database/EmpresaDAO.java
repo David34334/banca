@@ -15,4 +15,6 @@ public interface EmpresaDAO {
     
     public void deleteEmpresaServicio(EmpresaServicio empresaServicio);
     
+    public EmpresaServicio findEmpresaServicioByReferenceNumber(EmpresaServicio empresaServicio);
+    
 }

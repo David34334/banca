@@ -104,5 +104,47 @@
             <to-view-id>/pages/banca/irPagoServicio.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule id="17">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>pasarelaPagoServicio</from-outcome>
+            <to-view-id>/pages/banca/pasarelaPagoServicio.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="18">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>pagoServicio</from-outcome>
+            <to-view-id>/pages/banca/pagoServicio.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="19">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>reciboPagado</from-outcome>
+            <to-view-id>/pages/banca/reciboPagado.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="20">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>errorPagoRecibo</from-outcome>
+            <to-view-id>/pages/error/errorPagoRecibo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="21">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>errorNumeroReferencia</from-outcome>
+            <to-view-id>/pages/error/errorNumeroReferencia.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule id="22">
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>errorValorTransferencia</from-outcome>
+            <to-view-id>/pages/error/errorValorTransferencia.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
 </faces-config>

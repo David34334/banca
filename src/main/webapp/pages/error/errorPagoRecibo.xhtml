@@ -12,10 +12,9 @@
                     No tienes <b>saldo</b> suficiente para realizar esta operación!
                 </div>
                 <div class="font-weight-lighter">Tu cuenta tiene un saldo de: ${cuentaBean.cuenta.saldo} que no
-                    alcanza a cubrir el pago de: ${cuentaBean.valorATransferir}, vuelve a intentarlo con un monto menor
-                    o deposita dinero en tu cuenta!</div>
+                    alcanza a cubrir el pago de: ${cuentaBean.empresa.valor}!</div>
                 <h:form>
-                    <h:commandButton class="btn btn-block btn-danger mt-2" value="Volver" action="pasarelaTransferencia"></h:commandButton>
+                    <h:commandButton class="btn btn-block btn-danger mt-2" value="Volver" action="pasarelaPagoServicio"></h:commandButton>
                 </h:form>
             </ui:define>
         </ui:composition>

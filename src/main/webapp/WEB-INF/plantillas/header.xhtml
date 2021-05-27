@@ -18,11 +18,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <h:commandLink class="nav-link active" action="index">Home</h:commandLink>
+                        <c:if test="#{clienBean.verificarSesion() == false}">
+                            <h:commandLink class="nav-link active" action="index">Home</h:commandLink>
+                        </c:if>
                         <c:if test="#{clienBean.verificarSesion() == true}">
                             <h:commandLink class="nav-link active" action="inicioBanca">Inicio</h:commandLink>
-                            <h:commandLink class="nav-link active" action="perfilCliente">Perfil</h:commandLink>
                             <h:commandLink class="nav-link active" action="productosBanca">Productos</h:commandLink>
+                            <h:commandLink class="nav-link active mx-6" action="#{clienBean.cerrarSesion()}">Cerrar Sesión</h:commandLink>
                         </c:if>
                     </div>
                 </div>

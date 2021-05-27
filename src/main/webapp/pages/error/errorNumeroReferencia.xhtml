@@ -9,13 +9,12 @@
         <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
             <ui:define name="content">
                 <div class="alert alert-danger" role="alert">
-                    No tienes <b>saldo</b> suficiente para realizar esta operación!
+                    El número de referencia <b>#{cuentaBean.numeroReferencia}</b> no está asociado a ningún recibo de pago!
                 </div>
-                <div class="font-weight-lighter">Tu cuenta tiene un saldo de: ${cuentaBean.cuenta.saldo} que no
-                    alcanza a cubrir el pago de: ${cuentaBean.valorATransferir}, vuelve a intentarlo con un monto menor
-                    o deposita dinero en tu cuenta!</div>
+                <div class="font-weight-lighter">El número de referencia ingresado no está asociado a ningún recibo de pago,
+                verifica e ingresa el número nuevamente.</div>
                 <h:form>
-                    <h:commandButton class="btn btn-block btn-danger mt-2" value="Volver" action="pasarelaTransferencia"></h:commandButton>
+                    <h:commandButton class="btn btn-block btn-danger mt-3" value="Volver" action="pasarelaPagoServicio"></h:commandButton>
                 </h:form>
             </ui:define>
         </ui:composition>

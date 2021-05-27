@@ -58,26 +58,7 @@ public class ClienteBean implements Serializable {
         cliente = null;
         return "listadoClientes";
     }
-    
-    public String iniciarSesion(String nombreUsuario, String clave) {
-        cliente = new Cliente();
-        cliente.setNombreUsuario(nombreUsuario);
-        cliente.setClave(clave);
-        
-        try {
-            clienteSesion = clienteService.iniciarSesion(cliente);
-            
-            if (clienteSesion != null) {
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("cliente", clienteSesion);
-                return "inicioBanca";
-            } else {
-                return "iniciarSesion";
-            }
-        } catch (Exception e) {
-        }
-        return "iniciarSesion";
-    }
-    
+
     //SECCIÓN DE CUENTA AHORROS / CORRIENTE
     public String crearCuentaAhorros() {
         //Se trae el objeto tipoCuenta que corresponde a Cuenta de Ahorros (ID = 1)
@@ -96,7 +77,7 @@ public class ClienteBean implements Serializable {
         cuenta.setEstadoCuenta(1);
         cuenta.setIdTipoCuenta(cuentaTipo);
         //Por default el saldo es 0.
-        cuenta.setSaldo(0);
+        cuenta.setSaldo(0.0);
         this.cuentaService.guardarCuenta(cuenta);
         
         return "productosBanca";
@@ -119,7 +100,7 @@ public class ClienteBean implements Serializable {
         cuenta.setEstadoCuenta(1);
         cuenta.setIdTipoCuenta(cuentaTipo);
         //Por default el saldo es 0.
-        cuenta.setSaldo(0);
+        cuenta.setSaldo(0.0);
         this.cuentaService.guardarCuenta(cuenta);
         
         return "productosBanca";
@@ -144,12 +125,37 @@ public class ClienteBean implements Serializable {
         return "infoCuenta";
     }
     
+    public String iniciarSesion(String nombreUsuario, String clave) {
+        cliente = new Cliente();
+        cliente.setNombreUsuario(nombreUsuario);
+        cliente.setClave(clave);
+        
+        try {
+            clienteSesion = clienteService.iniciarSesion(cliente);
+            
+            if (clienteSesion != null) {
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("cliente", clienteSesion);
+                return "inicioBanca";
+            } else {
+                return "iniciarSesion";
+            }
+        } catch (Exception e) {
+        }
+        return "iniciarSesion";
+    }
+    
     public boolean verificarSesion() {
         boolean flag = true;
         if(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("cliente") == null) {
             flag = false;
         }
         return flag;
+    }
+    
+    public String cerrarSesion() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        this.clienteSesion = null;
+        return "index";
     }
 
     public List<Cliente> getClientes() {

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Resumen de tu Transferencia</title>
+    </h:head>
+    <h:body>
+        <h:form rendered="#{clienBean.verificarSesion}">
+            <ui:composition template="../../WEB-INF/plantillas/header.xhtml">
+                <ui:define name="content">
+                    <hr/>
+                    <h4 class="text-center font-weight-bolder">Pago Servicio: #{cuentaBean.servicio.idEmpresa.nombreServicio}</h4>
+                    <hr/>
+                    <div class="text-dark">
+                        <h:form>
+                            <h4>Recibo Generado:</h4>
+                            <h:outputLabel for="NumeroReferencia" class="control-label col-sm-4 font-weight-bolder" value="Referencia N°: "></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.servicio.numeroReferencias}"></h:outputText>
+                            <h:outputLabel for="Fecha" class="control-label col-sm-4 font-weight-bolder" value="Nombre de la Empresa: "></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.servicio.idEmpresa.nombreEmpresa}"></h:outputText>
+                            <h:outputLabel for="Descripcion" class="control-label col-sm-4 mt-1 font-weight-bolder" value="Descripción del Movimiento: "></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.servicio.idMovimiento.descripcion}"></h:outputText>
+                            <h:outputLabel for="CuentaOrigen" class="control-label col-sm-4 font-weight-bolder" value="Cuenta Origen: "></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="# - #{cuentaBean.servicio.idMovimiento.idCuenta.idCuenta}"></h:outputText>
+                            <h:outputLabel for="CuentaDestino" class="control-label col-sm-4 mt-1 font-weight-bolder" value="Fecha:"></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.servicio.fecha}"></h:outputText>
+                            <h:outputLabel for="Monto" class="control-label col-sm-4 mt-1 font-weight-bolder" value="Valor A Pagar: "></h:outputLabel>
+                            <h:outputText class="form-control font-weight-bolder" value="#{cuentaBean.servicio.idEmpresa.valor}"></h:outputText>
+                            <h:commandButton class="btn btn-success btn-block mt-2 mb-1" value="Pagar" action="#{cuentaBean.pagarServicio()}"></h:commandButton>
+                        </h:form>
+                        <h:form>
+                            <h:commandButton class="btn btn-danger btn-block mt-3" value="Cancelar" action="infoCuenta"></h:commandButton>
+                        </h:form>
+                    </div>
+                </ui:define>
+            </ui:composition>
+        </h:form>
+    </h:body>
+</html>
